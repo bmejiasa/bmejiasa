@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Datos del primer objeto
-datos_objeto1 = [
+datos_calcetin = [
     (0.038, 0.75), (0.063, 2.42), (0.056, 2.07), (0.080, 3.80), 
     (1.10, 6.70), (0.060, 2.70), (0.083, 4.50), (0.075, 3.60), 
     (0.070, 2.45), (0.076, 3.15), (1.01, 4.80), (1.38, 8.30), 
@@ -11,7 +11,7 @@ datos_objeto1 = [
 ]
 
 # Datos del segundo objeto
-datos_objeto2 = [
+datos_crema = [
     (0.063, 0.75), (0.075, 2.42), (0.068, 2.07), (0.095, 3.80), 
     (1.30, 6.70), (0.065, 2.70), (1.00, 4.50), (0.090, 3.60), 
     (0.073, 2.45), (0.076, 3.15), (1.08, 4.80), (1.53, 8.30), 
@@ -27,39 +27,25 @@ def crear_dataframe(datos):
         i += 1
     return df
 
-df_calcetin = crear_dataframe(datos_objeto1)
-df_crema = crear_dataframe(datos_objeto2)
+df_objeto1 = crear_dataframe(datos_calcetin)
+df_objeto2 = crear_dataframe(datos_crema)
 
 # Convertir altura a metros utilizando for
 def convertir_altura_a_metros(df):
     for i in range(len(df)):
         df.at[i, 'altura'] /= 100
 
-convertir_altura_a_metros(df_calcetin)
+convertir_altura_a_metros(df_calcein)
 convertir_altura_a_metros(df_crema)
 
-#la regresión lineal y el gráfico para el primer objeto
+# Realizar la regresión lineal y trazar el gráfico para el primer objeto
 sns.regplot(x='altura', y='tiempo', data=df_calcetin, ci=None)
 plt.title('Regresión lineal - calcetin')
 plt.xlabel('Altura (m)')
 plt.ylabel('Tiempo (s)')
 plt.show()
 
-#la regresión lineal y el gráfico para el segundo objeto
-sns.regplot(x='altura', y='tiempo', data=df_crema, ci=None)
-plt.title('Regresión lineal - crema')
-plt.xlabel('Altura (m)')
-plt.ylabel('Tiempo (s)')
-plt.show()altura'] / 100
-
-# la regresión lineal y  el gráfico para el primer objeto (calcetin)
-sns.regplot(x='altura', y='tiempo', data=df_calcetin, ci=None)
-plt.title('Regresión lineal - calcetin')
-plt.xlabel('Altura (m)')
-plt.ylabel('Tiempo (s)')
-plt.show()
-
-# la regresión lineal y el gráfico para el segundo objeto (crema)
+# Realizar la regresión lineal y trazar el gráfico para el segundo objeto
 sns.regplot(x='altura', y='tiempo', data=df_crema, ci=None)
 plt.title('Regresión lineal - crema')
 plt.xlabel('Altura (m)')
